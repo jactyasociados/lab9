@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="/static/styles.css" rel="stylesheet">
+    <title>Birthdays</title>
+</head>
+
+<body>
+    <div class="jumbotron">
+        <h1>Birthdays</h1>
+    </div>
+    <div class="container">
+        <div class="section">
+            <div class="error_message">
+                {{ message }}
+            </div>
+            <h2>Edit a Birthday</h2>
+            {% for birthday in birthday %}
+            <form action="/edit" method="POST">
+                <input name="name" type="text" placeholder="Name" autocomplete="off" autofocus value="{{ birthday.name }}">
+                <input name="month" type="number" placeholder="Month" max="12" min="1" autocomplete="off" autofocus value="{{ birthday.month }}">
+                <input name="day" type="number" placeholder="Day" max="31" min="1" autocomplete="off" autofocus value="{{ birthday.day }}">
+                <input type="hidden" name="id" value="{{ birthday.id }}">
+                <input type="submit" value="Update Birthday">
+            </form>
+            {% endfor %}
+        </div>        
+    </div>
+</body>
+
+</html>
